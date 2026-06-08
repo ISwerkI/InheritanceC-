@@ -22,6 +22,13 @@ namespace Academy
             Attendance = attendance;
             Console.WriteLine($"SConstructor:\t{GetHashCode()}");
         }
+
+        public Student(Human human, string speciality, string group, double rating,double attendance) : base(human, speciality)
+        {
+            this.Group = group;
+            this.Rating = rating;
+            this.Attendance = attendance;
+        }
         ~Student()
         {
             Console.WriteLine($"SDestructor:\t{GetHashCode()}");
