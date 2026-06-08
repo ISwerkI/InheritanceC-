@@ -2,6 +2,7 @@
 #define I_HERITANCE_PART_2
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,19 @@ namespace Academy
             Graduate graduate = new Graduate(student, "How to make money");
             Console.WriteLine(graduate);
 #endif
+            //Upcast
+            Human[] group = new Human[]
+            {
+                new Student("Vercetty","Tomy",30,"Ayto","Vice",91,98),
+                new Teacher("Diaz","Ricardo",45,"Weapons distribution",20),
+                new Graduate("Rozenberg","Ken",35,"Law","Vice",32,25,"How to make money"),
+                new Teacher("Colonel","Cortez",50,"Weapons distribution",25)
+            };
+
+            foreach (Human i in group)
+            {
+                Console.WriteLine(i);
+            }
 
 
         }

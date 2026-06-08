@@ -44,7 +44,7 @@ namespace Academy
         public override string ToString()
         {
             return base.ToString()+
-                $"{Group} {Rating} {Attendance}";
+                $"{Group.PadRight(8)} {Rating.ToString().PadLeft(8)} {Attendance.ToString().PadLeft(8)}";
         }
     }
 
