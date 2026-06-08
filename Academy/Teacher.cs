@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace Academy
 {
-    class Teacher: Human
+    class Teacher: AcademyMember
     {
-        public string Speciality { get; set; }
         public int Experience { get; set; }
 
         public Teacher
         (
                 string lastName, string firstName, int age,
                 string speciality, int experience
-        ) : base(lastName, firstName, age)
+        ) : base(lastName, firstName, age, speciality)
         {
             this.Speciality = speciality;
             this.Experience = experience;

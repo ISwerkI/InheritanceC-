@@ -21,6 +21,10 @@ namespace Academy
         {
             this.Speciality = speciality;
         }
+        public AcademyMember(AcademyMember other):base(other)
+        {
+            this.Speciality=other.Speciality;
+        }
         ~AcademyMember()
         {
         }

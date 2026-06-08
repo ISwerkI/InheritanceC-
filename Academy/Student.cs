@@ -29,6 +29,13 @@ namespace Academy
             this.Rating = rating;
             this.Attendance = attendance;
         }
+
+        public Student(Student other):base(other)
+        {
+            this.Group=other.Group;
+            this.Rating = other.Rating;
+            this.Attendance = other.Attendance;
+        }
         ~Student()
         {
             Console.WriteLine($"SDestructor:\t{GetHashCode()}");
