@@ -1,6 +1,6 @@
 ﻿//#define INHERITANCE_PART_1
 //#define INHERITANCE_PART_2
-#define WRITE_TO_FILE
+//#define WRITE_TO_FILE
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
@@ -55,7 +55,8 @@ namespace Academy
             Print(group);
             Save(group, "group.csv");
 #endif
-
+            Human[] group = Load("group.csv");
+            Print(group);
         }
         static void Save(Human[] group, string filename)
         {
@@ -77,6 +78,33 @@ namespace Academy
             {
                 Console.WriteLine(h);
             }
+        }
+
+        static Human[] Load(string filename)
+        {
+            List<Human> group = new List<Human>();
+            Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
+            StreamReader reader = new StreamReader(filename);
+            while (!reader.EndOfStream)
+            {
+                string record = reader.ReadLine();
+                Console.WriteLine(record);
+                group.Add(Factory(record.Split(':').First()).Init(record.Split(":,;".ToCharArray())));
+            }
+
+            reader.Close();
+            return group.ToArray();
+        }
+        static Human Factory(string type)
+        {
+            Human human = null;
+            switch (type)
+            {
+                case "Student":human = new Student("","",0,"","",0,0);          break;
+                case "Graduate":human = new Graduate("","",0,"","",0,0,"");     break;
+                case "Teacher":human = new Teacher("","",0,"",0);               break;
+            }
+            return human;
         }
     }
 }

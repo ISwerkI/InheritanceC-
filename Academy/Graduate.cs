@@ -39,5 +39,12 @@ namespace Academy
         {
             return base.ToFileSring()+$",{Subject}";
         }
+
+        public override Human Init(string[] values)
+        {
+            base.Init(values);
+            this.Subject = values[8];
+            return this;
+        }
     }
 }
