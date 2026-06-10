@@ -29,5 +29,10 @@ namespace Academy
         {
             return base.ToString() + $"{Speciality} {Experience}";
         }
+
+        public override string ToFileSring()
+        {
+            return base.ToFileSring()+$",{Experience}";
+        }
     }
 }

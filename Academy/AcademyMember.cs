@@ -28,10 +28,14 @@ namespace Academy
         ~AcademyMember()
         {
         }
-
         public override string ToString()
         {
             return base.ToString() + $"{Speciality.PadRight(12)} ";
+        }
+
+        public override string ToFileSring()
+        {
+            return base.ToFileSring()+$",{Speciality}";
         }
     }
 }

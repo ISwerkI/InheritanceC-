@@ -1,11 +1,15 @@
-﻿//#define I_HERITANCE_PART_1
-#define I_HERITANCE_PART_2
+﻿//#define INHERITANCE_PART_1
+//#define INHERITANCE_PART_2
+#define WRITE_TO_FILE
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.IO;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Academy
 {
@@ -13,7 +17,7 @@ namespace Academy
     {
         static void Main(string[] args)
         {
-#if I_HERITANCE_PART_1
+#if INHERITANCE_PART_1
             Human human = new Human("Hernriksoon", "Marthin", 35);
             human.Info();
             Console.WriteLine(human);
@@ -28,7 +32,7 @@ namespace Academy
             Console.WriteLine(graduate);
 #endif
 
-#if I_HERITANCE_PART_2
+#if INHERITANCE_PART_2
             Human human = new Human("Vercetty", "Tommy", 30);
             Console.WriteLine(human);
 
@@ -38,6 +42,8 @@ namespace Academy
             Graduate graduate = new Graduate(student, "How to make money");
             Console.WriteLine(graduate);
 #endif
+
+#if WRITE_TO_FILE
             //Upcast
             Human[] group = new Human[]
             {
@@ -46,13 +52,31 @@ namespace Academy
                 new Graduate("Rozenberg","Ken",35,"Law","Vice",32,25,"How to make money"),
                 new Teacher("Colonel","Cortez",50,"Weapons distribution",25)
             };
+            Print(group);
+            Save(group, "group.csv");
+#endif
 
-            foreach (Human i in group)
+        }
+        static void Save(Human[] group, string filename)
+        {
+            Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
+            Console.WriteLine(Directory.GetCurrentDirectory());
+            //string filename = "group.csv";
+            StreamWriter writer = new StreamWriter(filename);
+            foreach (Human h in group)
             {
-                Console.WriteLine(i);
+                writer.WriteLine(h.ToFileSring());
             }
+            writer.Close();
+            Process.Start("notepad", filename);
+        }
 
-
+        static void Print(Human[] group)
+        {
+            foreach (Human h in group)
+            {
+                Console.WriteLine(h);
+            }
         }
     }
 }

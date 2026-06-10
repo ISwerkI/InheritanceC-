@@ -34,5 +34,10 @@ namespace Academy
         {
             return base.ToString() + $" \"{Subject}\"";
         }
+
+        public override string ToFileSring()
+        {
+            return base.ToFileSring()+$",{Subject}";
+        }
     }
 }

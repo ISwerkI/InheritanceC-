@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Academy
 {
@@ -39,6 +40,11 @@ namespace Academy
         public override string ToString()
         {
             return $"{LastName.PadRight(12)} {FirstName.PadRight(12)} {Age.ToString().PadLeft(2).PadRight(3)} ";
+        }
+
+        public virtual string ToFileSring()
+        {
+            return $"{this.GetType().ToString().Split('.').Last()}:{LastName},{FirstName},{Age}";
         }
 
     }
