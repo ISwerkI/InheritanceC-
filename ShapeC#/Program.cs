@@ -23,11 +23,10 @@ namespace ShapeC_
                 );
             PaintEventArgs e = new PaintEventArgs(graphics, window_rect);
             Pen pen = new Pen(Color.AliceBlue, 5);
-            e.Graphics.DrawRectangle(pen, 100, 100, 250, 130);
 
 
-            Rectangle rectangle = new Rectangle(50, 32, 100,100, 5, Color.Red);
-            rectangle.Info(e);
+            Square square = new Square(50, 100,100, 5, Color.Red);
+            square.Info(e);
         }
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetConsoleWindow();
