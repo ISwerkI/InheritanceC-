@@ -25,8 +25,13 @@ namespace ShapeC_
             Pen pen = new Pen(Color.AliceBlue, 5);
 
 
-            Square square = new Square(50, 100,100, 5, Color.Red);
+            Square square = new Square(200, 100,300, 5, Color.Red);
+            square.Draw(e);
             square.Info(e);
+
+            Circle circle = new Circle(100, 400, 300, 5, Color.Yellow);
+            circle.Draw(e);
+            circle.Info(e);
         }
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetConsoleWindow();
