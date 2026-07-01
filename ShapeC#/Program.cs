@@ -16,6 +16,11 @@ namespace ShapeC_
 {
     internal class Program
     {
+        struct Parameters
+        {
+            public Shape[] shapes;
+            public PaintEventArgs e;
+        }
         static bool finish = false;
         static void Main(string[] args)
         {
@@ -46,9 +51,15 @@ namespace ShapeC_
             new Circle(100, 400, 300, 5, Color.Yellow)
             };
 
-            //Info(shapes, e);
-            Draw(shapes, e);
-            Console.Read();
+            Parameters parameters = new Parameters
+            {
+                shapes = shapes,
+                e = new PaintEventArgs(graphics, window_rect)
+            };
+
+            Thread draw_thread = new Thread(new ParameterizedThreadStart(Draw));
+            draw_thread.Start(parameters);
+            Console.ReadKey();
             finish = true;
 
         }
@@ -66,16 +77,16 @@ namespace ShapeC_
             }
         }
 
-        static void Draw(Shape[] shapes,PaintEventArgs e)
+        static void Draw(object obj)
         {
+            Parameters parameters = (Parameters)obj;
             while (!finish)
             {
-                for (int i = 0; i < shapes.Length; i++)
+                for (int i = 0; i < parameters.shapes.Length; i++)
                 {
-                    shapes[i].Draw(e);
+                    parameters.shapes[i].Draw(parameters.e);
                 }
             }
         }
-
     }
 }
