@@ -49,6 +49,9 @@ namespace ShapeC_
             Pen pen = new Pen(Color, 1);
             // NONE
             e.Graphics.DrawEllipse(pen, StartX, StartY, (float)Radius * 2, (float)Radius * 2);
+            DrawDiameter(e);
+            DrawRadius(e);
+            DrawCenter(e);
         }
         void DrawCenter(PaintEventArgs e)
         {
@@ -90,9 +93,6 @@ namespace ShapeC_
         {
             Console.WriteLine($"Радиус круга: {Radius}");
             Console.WriteLine($"Диаметр круга: {GetDiameter()}");
-            DrawDiameter(e);
-            DrawRadius(e);
-            DrawCenter(e);
             base.Info(e);
         }
     }
